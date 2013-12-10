@@ -1,0 +1,11 @@
+name: '${project.name}'
+main: me.xir.mc.plugin.boingpad.BoingPad
+version: '${project.version}'
+description: BOIIINNG!
+author: Xirme Community Developers
+dev-url: '${project.url}'
+
+permissions:
+    boingpad.use:
+        description: Allows a user to use a BoingPad
+        default: op
