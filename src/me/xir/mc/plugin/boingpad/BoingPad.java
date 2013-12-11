@@ -23,12 +23,10 @@ import org.bukkit.util.Vector;
 public class BoingPad extends JavaPlugin implements Listener {
 	
 	public void onEnable() {
+		getServer().getPluginManager().registerEvents(this, this);
 		
-		PluginManager pm = getServer().getPluginManager();
-		pm.registerEvents(this, this);
-		
+		//TODO: CONFIGS
 		saveDefaultConfig();
-		
 	}
 	
 	public void onDisable() {
@@ -46,6 +44,15 @@ public class BoingPad extends JavaPlugin implements Listener {
 					onBoing(new BoingEvent(e.getClickedBlock(), e.getClickedBlock().getRelative(BlockFace.DOWN), e.getPlayer()));
 					p.sendMessage(ChatColor.RED + "BOIINNNG!");
 				}
+			}
+		}
+	}
+	
+	@EventHandler
+	public void onBoingPadEnt(EntityInteractEvent e) {
+		if (e.getBlock().getType().equals(Material.IRON_PLATE)) {
+			if (e.getBlock().getRelative(BlockFace.DOWN).getType().equals(Material.REDSTONE_BLOCK)) {
+				onBoing(new BoingEvent(e.getBlock(), e.getBlock().getRelative(BlockFace.DOWN), e.getEntity()));
 			}
 		}
 	}
