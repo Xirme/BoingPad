@@ -1,7 +1,12 @@
 package me.xir.mc.plugin.boingpad;
 
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class BoingPadBlock implements Listener {
@@ -13,11 +18,22 @@ public class BoingPadBlock implements Listener {
 	}
 	
 	@EventHandler
-	public void onStep(PlayerInteractEvent e) {
-		if ((e.getAction() == Action.PHYSICAL) && /* INVISIBLE PLAYER :( */) {
-			e.setCancelled(true);
+	public void onBoingPad(PlayerInteractEvent e) {
+		Player player = e.getPlayer();
+		Block block = player.getLocation().getBlock();
+		Block blockUnder = block.getRelative(BlockFace.DOWN);
+		Block blockAbove = block.getRelative(BlockFace.UP);
+		if (player.hasPermission("boingpad.use") || player.getPlayer().isOp()) {
+			if (blockAbove.getType() == Material.IRON_PLATE) {
+				if (blockUnder.getType() == Material.REDSTONE_BLOCK) {
+					if(e.getAction().equals(Action.PHYSICAL)) {
+						if(e.getClickedBlock().getType() == Material.IRON_PLATE){
+							player.sendMessage("IT FUCKING WORKS");
+							System.out.println(player + "has stepped on the BoingPad!");
+						}
+					}
+				}
+			}
 		}
-		
 	}
-
 }
