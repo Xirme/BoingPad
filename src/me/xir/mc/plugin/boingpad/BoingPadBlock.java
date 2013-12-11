@@ -23,15 +23,15 @@ public class BoingPadBlock implements Listener {
 		Block block = player.getLocation().getBlock();
 		Block blockUnder = block.getRelative(BlockFace.DOWN);
 		Block blockAbove = block.getRelative(BlockFace.UP);
-		if (blockAbove.getType() == Material.IRON_PLATE) {
-			if (blockUnder.getType() == Material.REDSTONE_BLOCK) {
-				if (e.getAction() == Action.PHYSICAL) {
-					if (e.getClickedBlock().getType() == Material.IRON_PLATE) {
-						player.sendMessage("IT WORKS");
-						System.out.println(player + "has stepped on the BoingPad!");
-					}
+		if (blockAbove.getType() == Material.IRON_PLATE || blockUnder.getType() == Material.REDSTONE_BLOCK) {
+			if (e.getAction() == Action.PHYSICAL) {
+				if (e.getClickedBlock().getType() == Material.IRON_PLATE) {
+					player.sendMessage("IT WORKS");
+					System.out.println(player + "has stepped on the BoingPad!");
 				}
 			}
+		} else {
+			player.sendMessage("Something went wrong at blockAbove/blockUnder");
 		}
 	}
 }
