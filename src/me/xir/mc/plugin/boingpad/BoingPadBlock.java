@@ -28,7 +28,7 @@ public class BoingPadBlock implements Listener {
 				if (blockUnder.getType() == Material.REDSTONE_BLOCK) {
 					if(e.getAction().equals(Action.PHYSICAL)) {
 						if(e.getClickedBlock().getType() == Material.IRON_PLATE){
-							player.sendMessage("IT FUCKING WORKS");
+							player.sendMessage("IT WORKS");
 							System.out.println(player + "has stepped on the BoingPad!");
 						}
 					}
