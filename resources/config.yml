@@ -1,1 +1,7 @@
-height: 2
+
+
+BoingPad:
+	
+		velocity-multiplier: 2
+		worksOnHorse: true
+		

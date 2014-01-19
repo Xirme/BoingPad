@@ -1,6 +1,7 @@
 package me.xir.mc.plugin.boingpad;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -22,7 +23,13 @@ import org.bukkit.util.Vector;
 
 public class BoingPad extends JavaPlugin implements Listener {
 
+	public HashMap<String, Double> velocityMap;
+	public HashMap<String, Boolean> airborneMap;
+	
 	public void onEnable() {
+		
+		velocityMap = HashMap<String, Double>(); // This is the map to adjust velocity for the player
+		airborneMap = HashMap<String, Boolean>(); // This is a metaKey to say the user is flying in the air.
 		getServer().getPluginManager().registerEvents(this, this);
 
 		// TODO: CONFIGS
