@@ -28,8 +28,8 @@ public class BoingPad extends JavaPlugin implements Listener {
 	
 	public void onEnable() {
 		
-		velocityMap = HashMap<String, Double>(); // This is the map to adjust velocity for the player
-		airborneMap = HashMap<String, Boolean>(); // This is a metaKey to say the user is flying in the air.
+		velocityMap = new HashMap<String, Double>(); // This is the map to adjust velocity for the player
+		airborneMap = new HashMap<String, Boolean>(); // This is a metaKey to say the user is 
 		getServer().getPluginManager().registerEvents(this, this);
 
 		// TODO: CONFIGS
