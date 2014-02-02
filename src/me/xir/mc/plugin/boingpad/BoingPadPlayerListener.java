@@ -27,8 +27,7 @@ public class BoingPadPlayerListener implements Listener {
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent e) {
 		Player player = e.getPlayer();
-		ArrayList<Block> blockArray = new ArrayList<Block>();
-		
+
 		Block block = player.getLocation().getBlock(); // Block below player
 		Block blockBelow = block.getRelative( BlockFace.DOWN ); // Block below that block
 		
